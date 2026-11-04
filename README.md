@@ -1,276 +1,122 @@
-# N.E.X.U.S.
-### Neural Engine for eXploration, Understanding & Smart-home orchestration
+# ARK
+### Personal Agentic AI Assistant — Project Blueprint
 
-> An experimental AI-powered personal assistant designed to understand natural language, manage context, execute approved tasks, and orchestrate a smart-home environment.
+> ARK is a long-term personal AI engineering project intended to combine agentic AI, large language models, machine learning, memory, voice interaction, task automation, and smart-home orchestration.
 
-**N.E.X.U.S.** is a long-term personal AI engineering project inspired by the idea of J.A.R.V.I.S. It aims to combine agentic AI, machine learning, large language models, voice interaction, memory, automation, and smart-home integration into one unified assistant.
+**Project name:** ARK  
+**Full form:** To be finalized  
+**Status:** Planning / pre-coding  
+**Version:** 0.1 — Documentation baseline
 
-The goal is not simply to build another chatbot. It is to develop an intelligent system that can understand requests, plan tasks, use tools, interact with connected services, verify results, and report its actions.
+## Vision
 
----
+ARK aims to become a modular personal assistant that can understand natural-language requests, retrieve relevant context, plan multi-step tasks, use approved tools, verify outcomes, and communicate what it did.
 
-## 🚀 Project Vision
+The goal is not merely to build a chatbot. ARK is envisioned as a system that combines reasoning, integrations, memory, and carefully permissioned task execution.
 
-N.E.X.U.S. aims to become a personal AI assistant capable of:
+## Planned capabilities
 
-- Understanding natural-language instructions.
-- Maintaining useful long-term context and memory.
-- Planning and executing multi-step tasks.
-- Interacting with external tools and APIs.
-- Managing an integrated smart-home environment.
-- Communicating through voice and text.
-- Running scheduled and approved background tasks.
-- Learning from data through machine learning.
-- Being securely accessible from multiple devices.
-- Reporting completed, failed, and pending tasks.
+- Natural-language text and voice interaction
+- Context and user-approved memory
+- Task planning and tool calling
+- Task scheduling and background processing
+- Smart-home orchestration through a platform such as Home Assistant
+- Document search and Retrieval-Augmented Generation (RAG)
+- Machine-learning predictions and analysis
+- Activity history, verification, and user notifications
+- Secure access from authorized devices
 
-The long-term objective is to build a reliable, modular, and extensible personal AI system.
+These are planned capabilities, not claims that they are already implemented.
 
----
+## Proposed architecture
 
-## 🧠 Core Capabilities
+```text
+Phone / Laptop / Voice
+          |
+   Secure Interface
+          |
+    FastAPI Backend
+          |
+  Agent Orchestrator
+   |      |       |
+  LLM   Memory  Planner
+          |
+ Permission & Safety Checks
+          |
+   Task Execution Engine
+      |      |      |
+ Smart Home  APIs   ML Services
+          |
+ Result Verification
+          |
+ Activity Logs / User Response
+```
 
-The following are planned capabilities, not claims of completed functionality.
+See [`docs/architecture.md`](docs/architecture.md) for the detailed proposed design.
 
-| Module | Planned functionality |
+## Planned technology stack
+
+| Area | Candidate technologies |
 |---|---|
-| AI Brain | Understand requests and coordinate tasks |
-| Agent System | Planning, tool calling, and orchestration |
-| Memory Engine | Store and retrieve relevant context |
-| Knowledge Engine | Document processing and RAG |
-| Smart Home | Control and monitor connected devices |
-| Voice Interface | Speech recognition and spoken responses |
-| Automation Engine | Schedule and execute approved tasks |
-| Machine Learning | Prediction, classification, and anomaly detection |
-| Remote Access | Secure access from phone and laptop |
-| Dashboard | Monitor system status and activity |
+| Language | Python |
+| Backend | FastAPI, Pydantic |
+| Database | PostgreSQL, SQLAlchemy |
+| AI agents | LLM APIs, structured tool calling, LangGraph or custom orchestration |
+| RAG / embeddings | pgvector or FAISS, embedding models |
+| Data science | NumPy, Pandas, Matplotlib |
+| Machine learning | Scikit-learn, PyTorch |
+| Smart home | Home Assistant, MQTT |
+| Voice | Whisper or equivalent STT; Piper or equivalent TTS |
+| Frontend | React |
+| Deployment | Docker, Docker Compose, Linux later |
+| Secure remote access | VPN-based solution such as Tailscale |
 
----
+Choices may change based on implementation needs and learning.
 
-## 🏗️ System Architecture
+## Documentation
 
-The proposed architecture follows a modular design.
+- [`docs/project-vision.md`](docs/project-vision.md) — project purpose, scope, principles
+- [`docs/architecture.md`](docs/architecture.md) — proposed system design
+- [`docs/requirements.md`](docs/requirements.md) — functional and non-functional requirements
+- [`docs/roadmap.md`](docs/roadmap.md) — staged learning and development roadmap
+- [`docs/phase-1-checklist.md`](docs/phase-1-checklist.md) — Phase 1 task tracker
 
-```text
-                  USER INTERFACES
-             Phone / Laptop / Voice
-                       |
-                       v
-                 SECURE GATEWAY
-                       |
-                       v
-                 FASTAPI BACKEND
-                       |
-                       v
-                AGENT ORCHESTRATOR
-                       |
-          +------------+-------------+
-          |            |             |
-          v            v             v
-       LLM ENGINE    MEMORY       PLANNER
-          |            |             |
-          +------------+-------------+
-                       |
-                       v
-              PERMISSION & SAFETY
-                       |
-                       v
-              TASK EXECUTION ENGINE
-                       |
-          +------------+-------------+
-          |            |             |
-          v            v             v
-      SMART HOME   AUTOMATION      ML ENGINE
-          |            |             |
-          +------------+-------------+
-                       |
-                       v
-              RESULT VERIFICATION
-                       |
-                       v
-               ACTIVITY LOGS
-                       |
-                       v
-                USER NOTIFICATION
-```
+## Development roadmap at a glance
 
----
+| Phase | Focus |
+|---|---|
+| 0 | Planning and foundations |
+| 1 | Backend and database |
+| 2 | Smart-home simulation |
+| 3 | Agentic AI brain |
+| 4 | Memory and RAG |
+| 5 | Smart-home integration |
+| 6 | Voice interface |
+| 7 | Task scheduler and background execution |
+| 8 | Server deployment |
+| 9 | Machine learning and deep learning |
+| 10 | Evaluation, hardening, and portfolio |
 
-## 🛠️ Planned Technology Stack
+See [`docs/roadmap.md`](docs/roadmap.md) for details. Timeline is flexible; academic priorities come first.
 
-### Programming and Backend
-- Python
-- FastAPI
-- Pydantic
-- SQLAlchemy
-- PostgreSQL
+## Safety and security
 
-### Artificial Intelligence
-- Large Language Models (LLMs)
-- LangGraph or custom agent orchestration
-- Function and tool calling
-- Embeddings
-- Retrieval-Augmented Generation (RAG)
+ARK should operate with bounded permissions and clear user control.
 
-### Machine Learning
-- NumPy
-- Pandas
-- Matplotlib
-- Scikit-learn
-- PyTorch
+- Enforce permissions in application code, not solely through an LLM prompt.
+- Require human approval for consequential operations.
+- Begin smart-home work with a simulation and low-risk actions.
+- Avoid unrestricted control of locks, security systems, or hazardous appliances.
+- Validate inputs and protect credentials.
+- Keep useful audit logs while minimizing sensitive data collection.
+- Verify action outcomes and fail safely when outcomes are uncertain.
 
-### Smart Home and IoT
-- Home Assistant
-- MQTT
-- Device APIs
+## Current status
 
-### Voice Processing
-- Whisper or an alternative speech-to-text model
-- Piper or an alternative text-to-speech engine
-- Wake-word detection
+**Planning and documentation only.** Implementation has not started. The architecture and requirements are preliminary and will be revised as the project develops.
 
-### Frontend
-- React
-- HTML
-- CSS
-- JavaScript
+## Long-term goal
 
-### Deployment and Infrastructure
-- Docker
-- Docker Compose
-- Linux
-- Tailscale
-- Home server infrastructure
+Build a reliable, extensible personal AI assistant that brings together agentic workflows, ML capabilities, contextual memory, voice, and approved smart-home automation.
 
-*Technology choices may change as the project evolves.*
-
----
-
-## 📂 Planned Project Structure
-
-```text
-NEXUS/
-│
-├── backend/
-│   ├── app/
-│   │   ├── core/
-│   │   ├── api/
-│   │   ├── database/
-│   │   ├── agent/
-│   │   ├── memory/
-│   │   ├── automation/
-│   │   ├── smart_home/
-│   │   ├── voice/
-│   │   └── ml/
-│   │
-│   └── tests/
-│
-├── frontend/
-├── data/
-├── artifacts/
-├── docs/
-├── scripts/
-│
-├── docker-compose.yml
-├── .env.example
-└── README.md
-```
-
----
-
-## 🗺️ Development Roadmap
-
-The project will be developed incrementally, with each phase building on the previous one.
-
-| Phase | Focus | Target period |
-|---|---|---|
-| 0 | Planning and foundations | Before development |
-| 1 | Backend engineering and database | Month 1 |
-| 2 | Smart-home simulation | Month 2 |
-| 3 | Agentic AI brain | Months 3–4 |
-| 4 | Memory and RAG engine | Month 5 |
-| 5 | Smart-home integration | Months 6–7 |
-| 6 | Voice assistant | Month 8 |
-| 7 | Autonomous task engine | Months 9–10 |
-| 8 | Home server deployment | Month 11 |
-| 9 | Machine learning and deep learning | Months 12–13 |
-| 10 | Production improvements and portfolio | Months 14–18 |
-
-*Timeline is an estimate. Learning depth and project complexity will determine actual progress.*
-
----
-
-## 🔐 Safety and Security Principles
-
-N.E.X.U.S. is intended to be useful without giving an AI unrestricted control over the environment.
-
-The system will follow these principles:
-
-- Explicit permissions for tools and actions.
-- Human approval for consequential operations.
-- Verification after task execution.
-- Secure authentication and remote access.
-- Protected API keys and credentials.
-- Activity logs for important actions.
-- Limited access to connected devices.
-- Safe failure handling and emergency overrides.
-
-Actions involving physical security, electrical systems, or potentially hazardous appliances must not be executed without appropriate human authorization and safeguards.
-
----
-
-## 🎯 Learning Objectives
-
-N.E.X.U.S. is also a practical learning journey.
-
-Through this project, I aim to develop skills in:
-
-- Python and software engineering.
-- Backend and database development.
-- Data analysis and visualization.
-- Mathematics for machine learning.
-- Classical machine learning.
-- Deep learning and neural networks.
-- Natural language processing.
-- Large language models and generative AI.
-- Retrieval-Augmented Generation.
-- Agentic AI and autonomous workflows.
-- IoT and smart-home automation.
-- MLOps, deployment, and system monitoring.
-
-The objective is to understand the technologies behind the system rather than merely connect existing libraries and APIs.
-
----
-
-## 📈 Development Philosophy
-
-N.E.X.U.S. will be built with an emphasis on:
-
-1. **Understand before implementing** — Learn the underlying concepts.
-2. **Build incrementally** — Develop and test individual modules.
-3. **Measure results** — Evaluate models and system performance.
-4. **Design for reliability** — Handle failures and unexpected inputs.
-5. **Prioritize security** — Keep permissions and user control central.
-6. **Document progress** — Maintain clear technical documentation.
-
----
-
-## 📌 Current Project Status
-
-<blockquote>
-**Status: Planning and architecture**
-
-The project is currently in its planning stage. The architecture, learning objectives, technology choices, and development roadmap are being defined before implementation begins.
-</blockquote>
-
----
-
-## 🌟 Long-Term Goal
-
-To create a modular, intelligent, voice-enabled personal assistant that combines AI reasoning, machine learning, contextual memory, task automation, and smart-home orchestration into one reliable system.
-
-**N.E.X.U.S. — More than a chatbot. A personal AI system.**
-
----
-
-*Built as a long-term learning, experimentation, and engineering project.*
+**ARK — A personal AI system built step by step.**
